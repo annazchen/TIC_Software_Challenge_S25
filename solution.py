@@ -29,18 +29,19 @@ lidar = Lidar(robot)
 #functions
 def ifcollide():
     a = lidar.checkScan()
-    if Debug:
-        print("running lvl 1...")
-        print(lidar.detect_obstacle_in_cone(a, 0.1, 0, 30))
 
     if lidar.detect_obstacle_in_cone(a, 0.4, 0, 45) != (-1,-1):
         print("collide detected")
-        control.stop_keyboard_control()
-        while(lidar.detect_obstacle_in_cone(a, 0.5,0,45)!=(-1,-1)):
+
+        start_time = time.time()
+        time.sleep(0.5)
+        control.stop_keyboard_control() # stop keyboard control
+
+        while(time.time() - start_time < 1): # move backwards for 1 second
             control.move_backward()
 
         time.sleep(0.5)
-        control.start_keyboard_control()
+        control.start_keyboard_control() # restart keyboard control
     
 #define challenge level    
 if challengeLevel <= 2:
