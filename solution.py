@@ -44,7 +44,8 @@ try:
             # It is recommended you use functions for aspects of the challenge that will be resused in later challenges
             # For example, create a function that will detect if the robot is too close to a wall
             def ifcollide():
-                if
+                if 0:
+                    print("hi")
             
 
     if challengeLevel == 2:
