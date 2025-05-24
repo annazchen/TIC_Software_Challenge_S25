@@ -37,14 +37,14 @@ def timer(t):
         time.sleep(1)
 
 def ifcollide():
-    control.stop_keyboard_control()
-    time.sleep(0.1)
-    while time
+    if lidar.detect_obstacle_in_cone(10, 0, 45) != (-1,-1):
+        control.stop_keyboard_control()
+        time.sleep(0.1)
+        control.move_backward()
+        time.sleep(1.5)
+        control.start_keyboard_control()
     
-
-
-
-
+#define challenge level    
 if challengeLevel <= 2:
     control.start_keyboard_control()
     rclpy.spin_once(robot, timeout_sec=0.1)
@@ -64,8 +64,7 @@ try:
             # Write your solution here for challenge level 1
             # It is recommended you use functions for aspects of the challenge that will be resused in later challenges
             # For example, create a function that will detect if the robot is too close to a wall
-            if lidar.detect_obstacle_in_cone(10, 0, 45) != (-1,-1):
-                ifcollide() 
+            ifcollide()
             
     if challengeLevel == 2:
         while rclpy.ok():
