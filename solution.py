@@ -9,7 +9,7 @@ from ultralytics import YOLO
 challengeLevel = 0
 
 # Set to True if you want to run the simulation, False if you want to run on the real robot
-is_SIM = True
+is_SIM = False
 
 # Set to True if you want to run in debug mode with extra print statements, False otherwise
 Debug = False
@@ -43,6 +43,9 @@ try:
             # Write your solution here for challenge level 1
             # It is recommended you use functions for aspects of the challenge that will be resused in later challenges
             # For example, create a function that will detect if the robot is too close to a wall
+            def ifcollide():
+                if
+            
 
     if challengeLevel == 2:
         while rclpy.ok():
