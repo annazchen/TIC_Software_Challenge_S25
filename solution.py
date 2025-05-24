@@ -9,7 +9,7 @@ from ultralytics import YOLO
 challengeLevel = 0
 
 # Set to True if you want to run the simulation, False if you want to run on the real robot
-is_SIM = False
+is_SIM = True
 
 # Set to True if you want to run in debug mode with extra print statements, False otherwise
 Debug = False
@@ -31,13 +31,9 @@ if Debug:
 
 
 #functions
-def timer(t):
-    while t > 0:
-        t -= 1
-        time.sleep(1)
-
 def ifcollide():
-    if lidar.detect_obstacle_in_cone(10, 0, 45) != (-1,-1):
+    a = lidar.checkScan()
+    if lidar.detect_obstacle_in_cone(a, 0.1, 0, 45) != (-1,-1):
         control.stop_keyboard_control()
         time.sleep(0.1)
         control.move_backward()
